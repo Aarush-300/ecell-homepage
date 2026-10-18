@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eCell MSIT | Entrepreneurship Cell — MSIT New Delhi</title>
+  <meta name="description" content="Official Entrepreneurship Cell of Maharaja Surajmal Institute of Technology (MSIT), Janakpuri, New Delhi. Ideate. Inspire. Invest." />
+
+  <!--Google Fonts Inter and Space Grotesk-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!--Tailwind CSS CDN-->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!--Three js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!--Custom Stylesheet-->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!--3D WebGL Background Canvas-->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!--Floating Dark and Light Theme Switch-->
+  <button id="theme-toggle-btn" type="button" onclick="toggleTheme()" aria-label="Toggle Theme" class="theme-switch-btn">
+    <span id="theme-indicator" class="w-2.5 h-2.5 rounded-full bg-[#00C853]"></span>
+    <span id="theme-label" class="font-mono text-xs font-bold uppercase tracking-widest">Light Theme</span>
+  </button>
+
+  <!--Main Content Wrapper-->
+  <main class="relative z-10 surface-grid">
+
+    <!--HERO SECTION-->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-16 pb-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto text-center space-y-6">
+
+        <!--Animated Brand Heading-->
+        <div class="ecell-animated-brand font-display font-black text-3xl sm:text-4xl lg:text-5xl themed-heading">
+          eCell MSIT
+        </div>
+
+        <!--Animated Hero Headline Ideate Inspire Invest-->
+        <h1 class="font-display font-black text-5xl sm:text-6xl lg:text-8xl tracking-tight leading-[1.08] py-2">
+          <span class="hero-animated-words" aria-label="Ideate. Inspire. Invest.">
+            <span class="hero-word word-green" style="--word-index: 0;">Ideate.</span>
+            <span class="hero-word word-blue" style="--word-index: 1;">Inspire.</span>
+            <span class="hero-word word-green" style="--word-index: 2;">Invest.</span>
+          </span>
+        </h1>
+
+        <!--Supporting Paragraph Text-->
+        <p class="max-w-2xl mx-auto text-sm sm:text-base themed-subtext tracking-wide leading-relaxed">
+          Empowering student founders, innovators, and builders at Maharaja Surajmal Institute of Technology to transform bold ideas into scalable ventures.
+        </p>
+
+        <!--Primary CTAs-->
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <a href="#about" class="btn-primary font-mono text-xs sm:text-sm uppercase tracking-widest px-8 py-4 font-bold">
+            About E-Cell
+          </a>
+          <a href="#activities" class="btn-secondary font-mono text-xs sm:text-sm uppercase tracking-widest px-7 py-4 font-semibold">
+            Our Activities
+          </a>
+          <a href="#speakers" class="btn-secondary font-mono text-xs sm:text-sm uppercase tracking-widest px-7 py-4 font-semibold">
+            Meet Our Speakers
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!--ABOUT ECELL AND OUR VISION SECTION-->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!--About ECell Card-->
+        <div class="about-vision-card p-8 sm:p-10">
+          <h2 class="font-display font-black text-3xl sm:text-4xl uppercase themed-heading mb-5">
+            About E-Cell
+          </h2>
+          <p class="themed-subtext text-base sm:text-lg leading-relaxed">
+            Our entrepreneurship cell serves as the primary catalyst for student-led startups on campus. We cultivate creative problem-solving and a founder mindset by equipping students with mentorship, operational backing, and a launchpad to bring their concepts to market through hands-on bootcamps and pitch arenas.
+          </p>
+        </div>
+
+        <!--Our Vision Card-->
+        <div class="about-vision-card card-blue-accent p-8 sm:p-10">
+          <h2 class="font-display font-black text-3xl sm:text-4xl uppercase themed-heading mb-5">
+            Our Vision
+          </h2>
+          <p class="themed-subtext text-base sm:text-lg leading-relaxed">
+            We strive to build an environment where technical innovation fuels real-world impact and every student is empowered to lead as a founder. Our mission is to nurture a self-sustaining network of driven builders who create meaningful economic and social value.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!--OUR ACTIVITIES SECTION-->
+    <section id="activities" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center mb-14 flex flex-col items-center">
+        <h2 class="font-display font-black text-4xl sm:text-5xl uppercase themed-heading">
+          Our <span class="text-[#00C853]">Activities</span>
+        </h2>
+        <div class="w-16 h-[2px] bg-[#00C853] mt-3"></div>
+      </div>
+
+      <!--3 Activities Grid-->
+      <div id="activities-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!--Populated dynamically via script js-->
+      </div>
+    </section>
+
+    <!--OUR SPONSORS AND BUNKTOBRAINS SECTION-->
+    <section id="sponsors" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <!--Featured Partner Banner BunkToBrains-->
+      <div class="clip-card-banner bg-[#0A0A0A] text-[#F4F4F4] border border-[#0072FF] p-8 sm:p-12 mb-16 relative overflow-hidden">
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="font-mono text-xs uppercase tracking-[0.2em] text-[#00C853] font-bold">
+              FEATURED ECOSYSTEM PARTNER
+            </div>
+            <h3 class="font-display font-black text-3xl sm:text-4xl uppercase tracking-tight text-white">
+              BunkToBrains × eCell MSIT
+            </h3>
+            <p class="text-[#9CA3AF] text-sm sm:text-base leading-relaxed max-w-2xl">
+              Empowering GGSIPU & MSIT engineering students with high-impact exam crash courses, honest campus reviews, student podcasts, mentorship bootcamps, and career roadmaps—turning last-minute learners into industry-ready builders.
+            </p>
+            <div class="flex flex-wrap gap-3 pt-2 font-mono text-xs text-[#F4F4F4]">
+              <span class="px-3 py-1.5 border border-[#9CA3AF]/30">IPU Engineering Mentorship</span>
+              <span class="px-3 py-1.5 border border-[#9CA3AF]/30">Career & Startup Podcasts</span>
+              <span class="px-3 py-1.5 border border-[#9CA3AF]/30">Student Skill Upskilling</span>
+            </div>
+          </div>
+          <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
+            <a href="https://www.youtube.com/@Bunktobrains" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 bg-[#00C853] hover:bg-[#0072FF] text-[#0A0A0A] hover:text-white font-mono text-xs uppercase tracking-widest font-bold text-center transition">
+              Explore BunkToBrains
+            </a>
+            <a href="https://www.linkedin.com/company/bunktobrains" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 bg-transparent hover:border-[#00C853] border border-[#9CA3AF]/40 text-white font-mono text-xs uppercase tracking-widest font-semibold text-center transition">
+              Connect on LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!--Sponsors Section Header-->
+      <div class="text-center mb-12 flex flex-col items-center">
+        <h2 class="font-display font-black text-4xl sm:text-5xl uppercase themed-heading">
+          Our <span class="text-[#0072FF]">Sponsors</span>
+        </h2>
+        <div class="w-16 h-[2px] bg-[#0072FF] mt-3"></div>
+      </div>
+
+      <!--4 Sponsors Grid-->
+      <div id="sponsors-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+        <!--Populated dynamically via script js-->
+      </div>
+    </section>
+
+    <!--MEET OUR SPEAKERS SECTION-->
+    <section id="speakers" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto mb-10">
+      <div class="text-center mb-14 flex flex-col items-center">
+        <h2 class="font-display font-black text-4xl sm:text-5xl uppercase themed-heading">
+          Meet Our <span class="text-[#00C853]">Speakers</span>
+        </h2>
+        <div class="w-16 h-[2px] bg-[#00C853] mt-3"></div>
+      </div>
+
+      <!--3 Official Speakers Grid-->
+      <div id="speakers-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!--Populated dynamically via script js-->
+      </div>
+    </section>
+
+  </main>
+
+  <!--4 COLUMN FOOTER-->
+  <footer class="relative z-10 border-t border-[#9CA3AF]/25 bg-[#0A0A0A] py-16 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      
+      <!--Col 1 Logo and Tagline-->
+      <div class="space-y-5">
+        <div class="flex items-center gap-3">
+          <img src="logo.png" alt="eCell MSIT Logo" class="h-14 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
+          <div class="hidden font-display font-black text-2xl text-white tracking-tight">eCell MSIT</div>
+        </div>
+        <p class="text-[#9CA3AF] text-sm leading-relaxed max-w-[240px]">
+          Building a campus culture of innovation, leadership, and high-impact venture creation.
+        </p>
+      </div>
+
+      <!--Col 2 Contact Us-->
+      <div>
+        <h4 class="font-display font-extrabold text-base uppercase tracking-wider text-[#00C853] mb-6">Contact Us</h4>
+        <div class="space-y-2 text-[#9CA3AF] text-sm leading-relaxed">
+          <p>eCell MSIT, Maharaja Surajmal<br />Institute of Technology</p>
+          <p>C-4 Janakpuri, New Delhi - 110059</p>
+        </div>
+      </div>
+
+      <!--Col 3 Useful Links-->
+      <div>
+        <h4 class="font-display font-extrabold text-base uppercase tracking-wider text-[#00C853] mb-6">Useful Links</h4>
+        <ul class="space-y-3.5 text-[#9CA3AF] text-sm">
+          <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+          <li><a href="#sponsors" class="hover:text-white transition">Sponsors</a></li>
+          <li><a href="#activities" class="hover:text-white transition">Activities</a></li>
+          <li><a href="#speakers" class="hover:text-white transition">Speakers</a></li>
+        </ul>
+      </div>
+
+      <!--Col 4 Follow Us-->
+      <div>
+        <h4 class="font-display font-extrabold text-base uppercase tracking-wider text-[#00C853] mb-6">Follow Us</h4>
+        <div class="flex gap-3">
+          <!--Instagram-->
+          <a href="https://www.instagram.com/ecellmsi.t/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 border border-[#9CA3AF]/35 hover:border-[#00C853] hover:bg-[#00C853] text-[#F4F4F4] hover:text-[#0A0A0A] flex items-center justify-center transition">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <!--LinkedIn-->
+          <a href="https://www.linkedin.com/company/ecellmsit" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 border border-[#9CA3AF]/35 hover:border-[#0072FF] hover:bg-[#0072FF] text-[#F4F4F4] hover:text-white flex items-center justify-center transition">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <!--Facebook-->
+          <a href="https://www.facebook.com/ecellmsit/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-10 h-10 border border-[#9CA3AF]/35 hover:border-[#0072FF] hover:bg-[#0072FF] text-[#F4F4F4] hover:text-white flex items-center justify-center transition">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!--Custom Script-->
+  <script src="script.js"></script>
+</body>
+</html>

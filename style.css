@@ -1,0 +1,345 @@
+/*ECELL MSIT OFFICIAL BRANDKIT COLOR SYSTEM AND DESIGN RULES*/
+:root {
+  --brand-green: #00C853;
+  --brand-blue: #0072FF;
+  --brand-black: #0A0A0A;
+  --brand-light: #F4F4F4;
+  --brand-gray: #9CA3AF;
+
+  /*Light Mode Defaults*/
+  --bg-primary: #F4F4F4;
+  --bg-card: #FFFFFF;
+  --text-heading: #0A0A0A;
+  --text-sub: #4B5563;
+  --text-muted: #9CA3AF;
+
+  /*Thin 1px Border and Minimal Shadow*/
+  --border-color: rgba(156, 163, 175, 0.45);
+  --shadow-minimal: 0 4px 12px rgba(10, 10, 10, 0.04);
+  --shadow-hover: 0 8px 20px rgba(10, 10, 10, 0.08);
+}
+
+/*Dark Mode Overrides*/
+body.dark-theme {
+  --bg-primary: #0A0A0A;
+  --bg-card: #121212;
+  --text-heading: #F4F4F4;
+  --text-sub: #9CA3AF;
+  --text-muted: #9CA3AF;
+
+  --border-color: rgba(156, 163, 175, 0.24);
+  --shadow-minimal: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 8px 20px rgba(0, 200, 83, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-heading);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*Heavy Geometric Heading Typography*/
+.font-display {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/*Theme Utility Classes*/
+.themed-heading {
+  color: var(--text-heading);
+}
+.themed-subtext {
+  color: var(--text-sub);
+}
+.themed-muted {
+  color: var(--text-muted);
+}
+.themed-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+}
+.themed-border {
+  border-color: var(--border-color);
+}
+
+/*Floating Theme Toggle Switch*/
+.theme-switch-btn {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.1rem;
+  background-color: var(--bg-card);
+  color: var(--text-heading);
+  border: 1px solid var(--border-color);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  box-shadow: var(--shadow-minimal);
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-switch-btn:hover {
+  border-color: var(--brand-green);
+  transform: translateY(-2px);
+}
+
+/*Fullscreen 3D WebGL Canvas*/
+#webgl-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/*Clean 1px Architectural Grid Overlay*/
+.surface-grid {
+  background-size: 56px 56px;
+  background-image:
+    linear-gradient(to right, rgba(156, 163, 175, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(156, 163, 175, 0.08) 1px, transparent 1px);
+}
+
+/*ANIMATED ECELL MSIT BRAND HEADING*/
+.ecell-animated-brand {
+  display: inline-block;
+  opacity: 0;
+  animation: ecellBrandReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes ecellBrandReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px);
+    letter-spacing: -0.04em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.04em;
+  }
+}
+
+/*ANIMATED HERO TEXT IDEATE INSPIRE INVEST*/
+.hero-animated-words {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.32em;
+}
+
+.hero-word {
+  display: inline-block;
+  position: relative;
+  opacity: 0;
+  transform: translateY(24px);
+  animation:
+    heroWordReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    heroWordPulse 4.5s ease-in-out infinite;
+  animation-delay:
+    calc(var(--word-index) * 0.2s),
+    calc(1s + var(--word-index) * 1.5s);
+}
+
+.word-green {
+  color: var(--brand-green);
+}
+
+.word-blue {
+  color: var(--brand-blue);
+}
+
+.hero-word::after {
+  content: '';
+  position: absolute;
+  left: 4%;
+  bottom: -6px;
+  width: 92%;
+  height: 3px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: heroUnderlineCycle 4.5s ease-in-out infinite;
+  animation-delay: calc(1s + var(--word-index) * 1.5s);
+}
+
+@keyframes heroWordReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroWordPulse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  16% {
+    transform: translateY(-5px);
+  }
+  33% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroUnderlineCycle {
+  0%, 35%, 100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  16% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/*ABOUT ECELL AND OUR VISION CARDS*/
+.about-vision-card {
+  position: relative;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--brand-green);
+  box-shadow: var(--shadow-minimal);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.about-vision-card.card-blue-accent {
+  border-left-color: var(--brand-blue);
+}
+
+.about-vision-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/*CUSTOM CLIP CARD UI COMPONENTS*/
+.clip-card {
+  position: relative;
+  background-color: var(--bg-card);
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-minimal);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.clip-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--brand-green);
+  z-index: 10;
+}
+
+.clip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--brand-blue);
+}
+
+.clip-card-banner {
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px));
+  box-shadow: var(--shadow-minimal);
+}
+
+/*SPEAKER CARDS CIRCULAR AVATAR RING*/
+.speaker-avatar-ring {
+  width: 132px;
+  height: 132px;
+  border-radius: 9999px;
+  border: 2px solid var(--brand-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0 auto 1.5rem auto;
+  background-color: var(--brand-black);
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 800;
+}
+
+.speaker-avatar-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/*BUTTONS*/
+.btn-primary {
+  background-color: var(--brand-green);
+  color: #0A0A0A;
+  border: 1px solid var(--brand-green);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  box-shadow: var(--shadow-minimal);
+  transition: all 0.22s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--bg-card);
+  color: var(--text-heading);
+  border: 1px solid var(--border-color);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  box-shadow: var(--shadow-minimal);
+  transition: all 0.22s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+  transform: translateY(-2px);
+}
+
+/*MOBILE ORIENTATION AND RESPONSIVE IMPROVEMENTS*/
+@media (max-width: 768px) {
+  .clip-card {
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  }
+  .clip-card-banner {
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  }
+  .theme-switch-btn {
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.5rem 0.85rem;
+  }
+}
+
+@media (max-height: 540px) and (orientation: landscape) {
+  #hero {
+    min-height: auto;
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+  }
+}
