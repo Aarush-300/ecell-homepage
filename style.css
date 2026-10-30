@@ -8,28 +8,28 @@
 
   /*Light Mode Defaults*/
   --bg-primary: #F4F4F4;
-  --bg-card: #FFFFFF;
+  --bg-card: rgba(244, 244, 244, 0.85);
   --text-heading: #0A0A0A;
-  --text-sub: #4B5563;
+  --text-sub: #0A0A0A;
   --text-muted: #9CA3AF;
 
   /*Thin 1px Border and Minimal Shadow*/
   --border-color: rgba(156, 163, 175, 0.45);
   --shadow-minimal: 0 4px 12px rgba(10, 10, 10, 0.04);
-  --shadow-hover: 0 8px 20px rgba(10, 10, 10, 0.08);
+  --shadow-hover: 0 8px 20px rgba(0, 114, 255, 0.14);
 }
 
 /*Dark Mode Overrides*/
 body.dark-theme {
   --bg-primary: #0A0A0A;
-  --bg-card: #121212;
+  --bg-card: rgba(10, 10, 10, 0.82);
   --text-heading: #F4F4F4;
   --text-sub: #9CA3AF;
   --text-muted: #9CA3AF;
 
-  --border-color: rgba(156, 163, 175, 0.24);
-  --shadow-minimal: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 8px 20px rgba(0, 200, 83, 0.12);
+  --border-color: rgba(156, 163, 175, 0.25);
+  --shadow-minimal: 0 4px 12px rgba(10, 10, 10, 0.45);
+  --shadow-hover: 0 8px 20px rgba(0, 200, 83, 0.16);
 }
 
 * {
@@ -43,6 +43,29 @@ body {
   overflow-x: hidden;
   margin: 0;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*Keep video element active in render tree so Three.js VideoTexture always updates*/
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0.001;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/*Fullscreen 3D WebGL Canvas*/
+#webgl-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
 }
 
 /*Heavy Geometric Heading Typography*/
@@ -68,6 +91,7 @@ body {
 .themed-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
+  backdrop-filter: blur(6px);
 }
 .themed-border {
   border-color: var(--border-color);
@@ -86,6 +110,7 @@ body {
   background-color: var(--bg-card);
   color: var(--text-heading);
   border: 1px solid var(--border-color);
+  backdrop-filter: blur(6px);
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   box-shadow: var(--shadow-minimal);
   cursor: pointer;
@@ -95,25 +120,6 @@ body {
 .theme-switch-btn:hover {
   border-color: var(--brand-green);
   transform: translateY(-2px);
-}
-
-/*Fullscreen 3D WebGL Canvas*/
-#webgl-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/*Clean 1px Architectural Grid Overlay*/
-.surface-grid {
-  background-size: 56px 56px;
-  background-image:
-    linear-gradient(to right, rgba(156, 163, 175, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(156, 163, 175, 0.08) 1px, transparent 1px);
 }
 
 /*ANIMATED ECELL MSIT BRAND HEADING*/
@@ -217,6 +223,7 @@ body {
 .about-vision-card {
   position: relative;
   background-color: var(--bg-card);
+  backdrop-filter: blur(6px);
   border: 1px solid var(--border-color);
   border-left: 4px solid var(--brand-green);
   box-shadow: var(--shadow-minimal);
@@ -236,6 +243,7 @@ body {
 .clip-card {
   position: relative;
   background-color: var(--bg-card);
+  backdrop-filter: blur(6px);
   clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-minimal);
@@ -262,6 +270,7 @@ body {
 .clip-card-banner {
   clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px));
   box-shadow: var(--shadow-minimal);
+  backdrop-filter: blur(6px);
 }
 
 /*SPEAKER CARDS CIRCULAR AVATAR RING*/
@@ -276,7 +285,7 @@ body {
   overflow: hidden;
   margin: 0 auto 1.5rem auto;
   background-color: var(--brand-black);
-  color: #FFFFFF;
+  color: var(--brand-light);
   font-family: 'Inter', sans-serif;
   font-size: 2.25rem;
   font-weight: 800;
@@ -292,7 +301,7 @@ body {
 /*BUTTONS*/
 .btn-primary {
   background-color: var(--brand-green);
-  color: #0A0A0A;
+  color: var(--brand-black);
   border: 1px solid var(--brand-green);
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   box-shadow: var(--shadow-minimal);
@@ -302,7 +311,7 @@ body {
 .btn-primary:hover {
   background-color: var(--brand-blue);
   border-color: var(--brand-blue);
-  color: #FFFFFF;
+  color: var(--brand-light);
   transform: translateY(-2px);
 }
 
@@ -310,6 +319,7 @@ body {
   background-color: var(--bg-card);
   color: var(--text-heading);
   border: 1px solid var(--border-color);
+  backdrop-filter: blur(6px);
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   box-shadow: var(--shadow-minimal);
   transition: all 0.22s ease;
